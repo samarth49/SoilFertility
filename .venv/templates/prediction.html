@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Fertility Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Soil Fertility Prediction</h1>
+        <form method="POST" action="/predict">
+            <label for="ph_cacl2">pH (CaCl2):</label>
+            <input type="number" step="any" name="ph_cacl2" required><br>
+
+            <label for="ph_h20">pH (H20):</label>
+            <input type="number" step="any" name="ph_h20" required><br>
+
+            <label for="ec">Electrical Conductivity:</label>
+            <input type="number" step="any" name="ec" required><br>
+
+            <label for="oc">Organic Carbon content:</label>
+            <input type="number" step="any" name="oc" required><br>
+
+            <label for="caco3">Calcium Carbonate content:</label>
+            <input type="number" step="any" name="caco3" required><br>
+
+            <label for="p">Phosphorus content:</label>
+            <input type="number" step="any" name="p" required><br>
+
+            <label for="n">Nitrogen content:</label>
+            <input type="number" step="any" name="n" required><br>
+
+            <label for="k">Potassium content:</label>
+            <input type="number" step="any" name="k" required><br>
+
+            <button type="submit">Predict Fertility</button>
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
