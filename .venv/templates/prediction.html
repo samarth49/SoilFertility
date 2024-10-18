@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soil Fertility Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
@@ -37,8 +36,20 @@
             <button type="submit">Predict Fertility</button>
         </form>
 
-        {% if prediction_text %}
-            <h3>{{ prediction_text }}</h3>
+        {% if results %}
+            <h2>Prediction Results:</h2>
+            <table>
+                <tr>
+                    <th>Model</th>
+                    <th>Predicted Fertility</th>
+                </tr>
+                {% for model, prediction in results.items() %}
+                <tr>
+                    <td>{{ model }}</td>
+                    <td>{{ prediction }}</td>
+                </tr>
+                {% endfor %}
+            </table>
         {% endif %}
     </div>
 </body>
